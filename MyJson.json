@@ -1,0 +1,21 @@
+{
+    "jsonroot": [
+        {
+            "totalCountQuestions": "10",
+            "username": "super",
+            "password": "man",
+            "credentialsOK": "true",
+            "gameIsFinished": "false",
+            "serverQuestionId": "01",
+            "finalScore": "10",
+            "questionLabel": "Quelle est la couleur du cheval blanc d'Henri 4 ? ",
+            "proposedAnswer1": "bleu",
+            "proposedAnswer2": "noir",
+            "proposedAnswer3": "orange",
+            "proposedAnswer4": "blanc",
+            "correctAnswer": "proposedAnswer4"
+        }
+    ]
+}
+
+
