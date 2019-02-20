@@ -9,18 +9,12 @@ import QuestionsView from "./QuestionView";
 
 // TODO la couleur doit changer et rester changée à l'appui d'un bouton réponse
 
-const triangle = '';
-const diamondSquare = '';
-const cercle = '';
-const square = '';
-
-
 export default class QuestionScreenTest extends Component {
     constructor(props) {
         super(props);
         this.state = {
             valueToSave: '',
-            data:[
+            data:
                 {
                     totalCountQuestions:"10",
                     gameIsFinished:"false",
@@ -30,29 +24,31 @@ export default class QuestionScreenTest extends Component {
                     proposedAnswer2:"noir",
                     proposedAnswer3:"orange",
                     proposedAnswer4:"blanc",
-                    correctAnswer:"proposedAnswer4",
+                    correctAnswer:"blanc",
                 }
-            ]
         }
     }
 
     CheckAnswer(valueToSave){
         console.log('check');
     }
-    handleClic(value){
-        console.log("ok" + value)
-/*        this.setState({ valueToSave: value }
-        if(value === this.state.data.correctAnswer){
-            console.log("ok")}*/
+
+    handleClick(value){
+        console.log("handleClick :" + value);
+        this.setState({ valueToSave: value })
+
+        console.log("correctAnswer : "+this.state.data.correctAnswer);
+        if(value === this.state.data.correctAnswer)
+        {
+            console.log("ok")}
     }
+
     render() {
         const items = [
-            { name: 'triangle', code: ConstantsColorsCodes.INCORRECT_RED }, { name: 'losange', code: ConstantsColorsCodes.MY_BLUE },
-            { name: 'cercle', code: ConstantsColorsCodes.MY_ORANGE }, { name: 'carré', code: ConstantsColorsCodes.CORRECT_GREEN },
+            { name: this.state.data.proposedAnswer1, code: ConstantsColorsCodes.INCORRECT_RED }, { name: this.state.data.proposedAnswer2, code: ConstantsColorsCodes.MY_BLUE },
+            { name: this.state.data.proposedAnswer3, code: ConstantsColorsCodes.MY_ORANGE }, { name: this.state.data.proposedAnswer4, code: ConstantsColorsCodes.CORRECT_GREEN },
         ];
-        console.log("passed "+this.state.valueToSave);
-        console.log("passed 2 "+this.state.valueToSave);
-
+        console.log("passed 4 "+this.state.valueToSave);
 
         return (
             <Grid style={styles.grid}>
@@ -74,7 +70,7 @@ export default class QuestionScreenTest extends Component {
                         // fixed
                         // spacing={20}
                         renderItem={({ item, index }) => (
-                            <TouchableOpacity onPress={() => this.handleClic(item.name)}>
+                            <TouchableOpacity onPress={() => this.handleClick(item.name)}>
                                 <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
                                     <Text style={styles.itemName}>{item.name}</Text>
                                 </View>
@@ -86,13 +82,6 @@ export default class QuestionScreenTest extends Component {
             </Grid>
         );
     }
-    /*
-     onPress={this.CheckAnswer(this.state.valueToSave)}
-
-        changeColor() {
-            //this.setState({code: '#ddd'});
-            console.log("passé "+this.state.item);
-        }*/
 }
 
 const styles = StyleSheet.create({
@@ -125,7 +114,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
         textAlign: 'center',
-
     },
     test2: {
         backgroundColor: ConstantsColorsCodes.MY_BLUE,
@@ -135,7 +123,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
         textAlign: 'center',
-
     },
     test3: {
         backgroundColor: ConstantsColorsCodes.MY_ORANGE,
@@ -145,7 +132,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
         textAlign: 'center',
-
     },
     test4: {
         backgroundColor: ConstantsColorsCodes.CORRECT_GREEN,
@@ -155,7 +141,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
         textAlign: 'center',
-
     },
     itemContainer: {
         justifyContent: 'flex-end',
