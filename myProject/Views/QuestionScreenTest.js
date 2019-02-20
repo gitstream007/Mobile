@@ -6,6 +6,9 @@ import {FlatGrid} from "react-native-super-grid";
 import ConstantsColorsCodes from "../ConstantsColorsCodes";
 import CorrectAnswerScreen from "./CorrectAnswerScreen";
 import QuestionsView from "./QuestionView";
+import GameHelper from "../GameHelper";
+
+let isNewQuestion = true;
 
 // TODO la couleur doit changer et rester changée à l'appui d'un bouton réponse
 
@@ -29,10 +32,6 @@ export default class QuestionScreenTest extends Component {
         }
     }
 
-    CheckAnswer(valueToSave){
-        console.log('check');
-    }
-
     handleClick(value){
         console.log("handleClick :" + value);
         this.setState({ valueToSave: value })
@@ -40,15 +39,24 @@ export default class QuestionScreenTest extends Component {
         console.log("correctAnswer : "+this.state.data.correctAnswer);
         if(value === this.state.data.correctAnswer)
         {
-            console.log("ok")}
-    }
+            console.log("bien répondu ");
+            const partialScore = 1;
+            GameHelper.getProgressiveScore(partialScore, isNewQuestion);
+            isNewQuestion = false;
+        }
+        else
+        {
+            console.log("pas bien répondu !")}
+            const partialScore = 0;
+            GameHelper.getProgressiveScore(partialScore, isNewQuestion);
+            isNewQuestion = false;
+        }
 
     render() {
         const items = [
             { name: this.state.data.proposedAnswer1, code: ConstantsColorsCodes.INCORRECT_RED }, { name: this.state.data.proposedAnswer2, code: ConstantsColorsCodes.MY_BLUE },
             { name: this.state.data.proposedAnswer3, code: ConstantsColorsCodes.MY_ORANGE }, { name: this.state.data.proposedAnswer4, code: ConstantsColorsCodes.CORRECT_GREEN },
         ];
-        console.log("passed 4 "+this.state.valueToSave);
 
         return (
             <Grid style={styles.grid}>

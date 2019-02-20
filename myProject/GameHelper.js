@@ -1,4 +1,7 @@
 
+let isReceivedScore = false;
+let tempCorrectAnswers = 0;
+let finalScore = 0;
 
 class GameHelper {
 
@@ -10,31 +13,23 @@ class GameHelper {
 
     }
 
-    //TODO
-    static checkValidAnswer(){
-/*        if ( == ) {
-            return true;
-        } else {
-            return false;
-        }*/
-    }
-
     static waitNewQuestion(){
 
     }
 
-    static getProgressiveScore(){
-       let countCorrectAnswers = 0;
-        for (let i = 0; i < this.answers.length; i++) {
-            if (this.answers[i]) {
-                countCorrectAnswers ++;
-            }
+    static getProgressiveScore(partialScore, isNewQuestion){
+        let tempCorrectAnswers = partialScore;
+        if(tempCorrectAnswers != 0 && isNewQuestion) {
+            getFinalScore(tempCorrectAnswers);
+            console.log("tempCorrectAnswers :"+tempCorrectAnswers);
         }
-        return countCorrectAnswers;
     }
 
-    static getFinalScore(){
-
+    static getFinalScore(tempCorrectAnswers){
+            if(tempCorrectAnswers)
+            { finalScore = finalScore + tempCorrectAnswers
+            console.log("finalScore :" +finalScore);
+            }
     }
 
     static showCorrectAnswer(){
