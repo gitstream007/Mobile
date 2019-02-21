@@ -17,19 +17,26 @@ class GameHelper {
 
     }
 
-    static getProgressiveScore(partialScore, isNewQuestion){
+    static getProgressiveScore(partialScore){
         let tempCorrectAnswers = partialScore;
-        if(tempCorrectAnswers != 0 && isNewQuestion) {
-            getFinalScore(tempCorrectAnswers);
+        console.log("tempCorrectAnswers :"+tempCorrectAnswers);
+
+
+
+
+        if(tempCorrectAnswers != 0) {
             console.log("tempCorrectAnswers :"+tempCorrectAnswers);
+            GameHelper.getFinalScore(tempCorrectAnswers);
         }
     }
 
     static getFinalScore(tempCorrectAnswers){
-            if(tempCorrectAnswers)
-            { finalScore = finalScore + tempCorrectAnswers
+        console.log("finalScore ::::::" );
+
+        if(tempCorrectAnswers)
+        { finalScore = finalScore + tempCorrectAnswers
             console.log("finalScore :" +finalScore);
-            }
+        }
     }
 
     static showCorrectAnswer(){
@@ -40,7 +47,7 @@ class GameHelper {
 
     }
 
-     static checkGameIsFinished(){
+    static checkGameIsFinished(){
 
     }
 

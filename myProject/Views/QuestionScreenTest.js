@@ -9,6 +9,8 @@ import QuestionsView from "./QuestionView";
 import GameHelper from "../GameHelper";
 
 let isNewQuestion = true;
+let actualQuestionId = 0;
+
 
 // TODO la couleur doit changer et rester changée à l'appui d'un bouton réponse
 
@@ -32,26 +34,37 @@ export default class QuestionScreenTest extends Component {
         }
     }
 
-    handleClick(value){
+    handleClick(value) {
         console.log("handleClick :" + value);
-        this.setState({ valueToSave: value })
+        this.setState({valueToSave: value})
+        actualQuestionId = this.state.data.serverQuestionId;
+        let nextQuestionId = parseInt(actualQuestionId) + 1;
+        console.log("actualQuestionId :" + actualQuestionId);
+        console.log("nextQuestionId :" + nextQuestionId);
 
-        console.log("correctAnswer : "+this.state.data.correctAnswer);
-        if(value === this.state.data.correctAnswer)
-        {
-            console.log("bien répondu ");
-            const partialScore = 1;
-            GameHelper.getProgressiveScore(partialScore, isNewQuestion);
+        console.log("correctAnswer : " + this.state.data.correctAnswer);
+        console.log("serverQuestionId : " + this.state.data.serverQuestionId);
+
+        if (actualQuestionId) {
+            if (value === this.state.data.correctAnswer) {
+                console.log("bien répondu ");
+                let partialScore = 1;
+                GameHelper.getProgressiveScore(partialScore, this.state.data.serverQuestionId);
+                isNewQuestion = false;
+            } else {
+                console.log("pas bien répondu !")
+            }
+            let partialScore = 0;
+            GameHelper.getProgressiveScore(partialScore, this.state.data.serverQuestionId);
             isNewQuestion = false;
         }
         else
         {
-            console.log("pas bien répondu !")}
-            const partialScore = 0;
-            GameHelper.getProgressiveScore(partialScore, isNewQuestion);
-            isNewQuestion = false;
+            console.log("déjà répondu à la question ");
         }
+        actualQuestionId = nextQuestionId
 
+    }
     render() {
         const items = [
             { name: this.state.data.proposedAnswer1, code: ConstantsColorsCodes.INCORRECT_RED }, { name: this.state.data.proposedAnswer2, code: ConstantsColorsCodes.MY_BLUE },
