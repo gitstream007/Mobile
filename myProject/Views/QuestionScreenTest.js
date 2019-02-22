@@ -9,7 +9,7 @@ import QuestionsView from "./QuestionView";
 import GameHelper from "../GameHelper";
 
 let isNewQuestion = true;
-let actualQuestionId = 0;
+let actualQuestionId;
 
 
 // TODO la couleur doit changer et rester changée à l'appui d'un bouton réponse
@@ -19,6 +19,7 @@ export default class QuestionScreenTest extends Component {
         super(props);
         this.state = {
             valueToSave: '',
+            count: 0,
             data:
                 {
                     totalCountQuestions:"10",
@@ -45,24 +46,27 @@ export default class QuestionScreenTest extends Component {
         console.log("correctAnswer : " + this.state.data.correctAnswer);
         console.log("serverQuestionId : " + this.state.data.serverQuestionId);
 
-        if (actualQuestionId) {
+        if (actualQuestionId != nextQuestionId) {
             if (value === this.state.data.correctAnswer) {
                 console.log("bien répondu ");
                 let partialScore = 1;
                 GameHelper.getProgressiveScore(partialScore, this.state.data.serverQuestionId);
-                isNewQuestion = false;
+              //  isNewQuestion = false;
             } else {
                 console.log("pas bien répondu !")
+                let partialScore = 0;
+                GameHelper.getProgressiveScore(partialScore, this.state.data.serverQuestionId);
             }
-            let partialScore = 0;
-            GameHelper.getProgressiveScore(partialScore, this.state.data.serverQuestionId);
-            isNewQuestion = false;
+
+           // isNewQuestion = false;
+           // actualQuestionId = nextQuestionId
+            console.log("actualQuestionId :" +actualQuestionId)
+
         }
         else
         {
             console.log("déjà répondu à la question ");
         }
-        actualQuestionId = nextQuestionId
 
     }
     render() {
