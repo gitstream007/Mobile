@@ -25,15 +25,20 @@ export default class QuestionScreenTest extends Component {
             count: 0,
             data:
                 {
-                    totalCountQuestions:"10",
-                    gameIsFinished:"false",
-                    serverQuestionId:"01",
-                    finalScore:"10",
-                    proposedAnswer1:"bleu",
-                    proposedAnswer2:"noir",
-                    proposedAnswer3:"orange",
-                    proposedAnswer4:"blanc",
-                    correctAnswer:"blanc",
+                    totalCountQuestions: "05",
+                    username: "super",
+                    password: "man",
+                    credentialsOK: "true",
+                    gameIsFinished: "false",
+                    isNewQuestion: "false",
+                    serverQuestionId: "01",
+                    finalScore: "01",
+                    questionLabel: "Quelle est la couleur du cheval blanc d'Henri 4 ? ",
+                    proposedAnswer1: "bleu",
+                    proposedAnswer2: "noir",
+                    proposedAnswer3: "orange",
+                    proposedAnswer4: "blanc",
+                    correctAnswer: "blanc"
                 }
         }
     }
@@ -41,7 +46,7 @@ export default class QuestionScreenTest extends Component {
     handleClick(value) {
         this.setState({count: this.state.count+1});
         console.log("handleClick :" + value);
-        this.setState({valueToSave: value})
+        this.setState({valueToSave: value});
         actualQuestionId = this.state.data.serverQuestionId;
         let nextQuestionId = parseInt(actualQuestionId) + 1;
         console.log("actualQuestionId :" + actualQuestionId);
@@ -55,14 +60,23 @@ export default class QuestionScreenTest extends Component {
                 console.log("bien répondu ");
                 let partialScore = 1;
                 GameHelper.getProgressiveScore(partialScore, this.state.data.serverQuestionId);
-                this.props.navigation.navigate('CorrectAnswerScreen');
+
+                //go to the CorrectAnswerScreen
+                GameHelper.showCorrectAnswer();
+
+
               //  isNewQuestion = false;
             } else {
-                console.log("pas bien répondu !")
+                console.log("pas bien répondu !");
                 let partialScore = 0;
                 GameHelper.getProgressiveScore(partialScore, this.state.data.serverQuestionId);
+
+                //go to the IncorrectAnswerScreen
+                GameHelper.showIncorrectAnswer();
             }
 
+            GameHelper.waitNewQuestion(this.state.data.isNewQuestion);
+            GameHelper.checkGameIsFinished(this.state.data.gameIsFinished, this.state.data.finalScore);
            // isNewQuestion = false;
            // actualQuestionId = nextQuestionId
             console.log("actualQuestionId :" +actualQuestionId)

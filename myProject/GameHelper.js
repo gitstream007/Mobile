@@ -7,22 +7,20 @@ class GameHelper {
 
     constructor() {}
 
-    static answers = [];
-
     static checkCredentials(){
 
     }
 
-    static waitNewQuestion(){
-
+    static waitNewQuestion(isNewQuestion){
+        if(isNewQuestion)
+        {
+            // TODO
+        }
     }
 
     static getProgressiveScore(partialScore){
         let tempCorrectAnswers = partialScore;
         console.log("tempCorrectAnswers :"+tempCorrectAnswers);
-
-
-
 
         if(tempCorrectAnswers != 0) {
             console.log("tempCorrectAnswers :"+tempCorrectAnswers);
@@ -40,15 +38,22 @@ class GameHelper {
     }
 
     static showCorrectAnswer(){
+        // TODO marche pas
+       // this.props.navigation.navigate('CorrectAnswerScreen');
+    }
 
+    static showIncorrectAnswer(){
+        // TODO marche pas
+       // this.props.navigation.navigate('IncorrectAnswerScreen');
     }
 
     static checkBackButtonIsPressed(){
 
     }
 
-    static checkGameIsFinished(){
-
+    static checkGameIsFinished(gameIsFinished, finalScore){
+        // TODO marche pas
+        // this.props.navigation.navigate('GameIsFinishedView', {finalScore: finalScore}););
     }
 
 

@@ -6,6 +6,7 @@
             "password": "man",
             "credentialsOK": "true",
             "gameIsFinished": "false",
+            "isNewQuestion": "false",
             "serverQuestionId": "01",
             "finalScore": "01",
             "questionLabel": "Quelle est la couleur du cheval blanc d'Henri 4 ? ",
@@ -13,7 +14,7 @@
             "proposedAnswer2": "noir",
             "proposedAnswer3": "orange",
             "proposedAnswer4": "blanc",
-            "correctAnswer": "proposedAnswer4"
+            "correctAnswer": "blanc"
         }
     ]
 }
@@ -27,6 +28,7 @@
             "password": "man",
             "credentialsOK": "true",
             "gameIsFinished": "false",
+            "isNewQuestion": "false",
             "serverQuestionId": "02",
             "finalScore": "02",
             "questionLabel": "Quelle sont les couleurs du drapeau français ? ",
@@ -34,7 +36,7 @@
             "proposedAnswer2": "bleu vert rouge",
             "proposedAnswer3": "bleu blanc rouge",
             "proposedAnswer4": "bleu noir vert",
-            "correctAnswer": "proposedAnswer3"
+            "correctAnswer": "bleu blanc rouge"
         }
     ]
 }
@@ -47,13 +49,14 @@
             "credentialsOK": "true",
             "gameIsFinished": "false",
             "serverQuestionId": "03",
+            "isNewQuestion": "false",
             "finalScore": "03",
             "questionLabel": "5 + 5 ? ",
             "proposedAnswer1": "55",
             "proposedAnswer2": "15",
             "proposedAnswer3": "12",
             "proposedAnswer4": "10",
-            "correctAnswer": "proposedAnswer4"
+            "correctAnswer": "10"
         }
     ]
 }
@@ -65,6 +68,7 @@
             "password": "man",
             "credentialsOK": "true",
             "gameIsFinished": "false",
+            "isNewQuestion": "false",
             "serverQuestionId": "04",
             "finalScore": "04",
             "questionLabel": "Dans quelle école sommes-nous cette année ? ",
@@ -72,7 +76,7 @@
             "proposedAnswer2": "Les minets",
             "proposedAnswer3": "L'Etnarc",
             "proposedAnswer4": "L'Estiam",
-            "correctAnswer": "proposedAnswer4"
+            "correctAnswer": "L'Estiam"
         }
     ]
 }
@@ -84,6 +88,7 @@
             "password": "man",
             "credentialsOK": "true",
             "gameIsFinished": "false",
+            "isNewQuestion": "false",
             "serverQuestionId": "05",
             "finalScore": "05",
             "questionLabel": "Sur nous nous asseyons sur une ? ",
@@ -91,7 +96,7 @@
             "proposedAnswer2": "chaise",
             "proposedAnswer3": "porte",
             "proposedAnswer4": "maison",
-            "correctAnswer": "proposedAnswer2"
+            "correctAnswer": "chaise"
         }
     ]
 }

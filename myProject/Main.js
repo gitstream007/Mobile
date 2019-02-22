@@ -45,6 +45,7 @@ import CorrectAnswerScreen from "./Views/CorrectAnswerScreen";//ok
 import IncorrectAnswerScreen from "./Views/IncorrectAnswerScreen";
 import QuestionScreen from "./Views/QuestionScreen";
 import QuestionScreenTest from "./Views/QuestionScreenTest";
+import GameIsFinishedView from "./Views/GameIsFinishedView";
 import LoginView from "./Views/LoginView";
 
 export default class Main extends React.Component {
