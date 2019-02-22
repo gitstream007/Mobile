@@ -36,6 +36,7 @@ export default class QuestionScreenTest extends Component {
     }
 
     handleClick(value) {
+        this.setState({count: this.state.count+1});
         console.log("handleClick :" + value);
         this.setState({valueToSave: value})
         actualQuestionId = this.state.data.serverQuestionId;
@@ -46,7 +47,7 @@ export default class QuestionScreenTest extends Component {
         console.log("correctAnswer : " + this.state.data.correctAnswer);
         console.log("serverQuestionId : " + this.state.data.serverQuestionId);
 
-        if (actualQuestionId != nextQuestionId) {
+        if (this.state.count < this.state.data.serverQuestionId) {
             if (value === this.state.data.correctAnswer) {
                 console.log("bien répondu ");
                 let partialScore = 1;
