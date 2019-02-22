@@ -1,13 +1,13 @@
 {
     "jsonroot": [
         {
-            "totalCountQuestions": "10",
+            "totalCountQuestions": "05",
             "username": "super",
             "password": "man",
             "credentialsOK": "true",
             "gameIsFinished": "false",
             "serverQuestionId": "01",
-            "finalScore": "10",
+            "finalScore": "01",
             "questionLabel": "Quelle est la couleur du cheval blanc d'Henri 4 ? ",
             "proposedAnswer1": "bleu",
             "proposedAnswer2": "noir",
@@ -17,5 +17,82 @@
         }
     ]
 }
+/*
 
-
+{
+    "jsonroot": [
+        {
+            "totalCountQuestions": "05",
+            "username": "super",
+            "password": "man",
+            "credentialsOK": "true",
+            "gameIsFinished": "false",
+            "serverQuestionId": "02",
+            "finalScore": "02",
+            "questionLabel": "Quelle sont les couleurs du drapeau français ? ",
+            "proposedAnswer1": "bleu blanc vert",
+            "proposedAnswer2": "bleu vert rouge",
+            "proposedAnswer3": "bleu blanc rouge",
+            "proposedAnswer4": "bleu noir vert",
+            "correctAnswer": "proposedAnswer3"
+        }
+    ]
+}
+{
+    "jsonroot": [
+        {
+            "totalCountQuestions": "05",
+            "username": "super",
+            "password": "man",
+            "credentialsOK": "true",
+            "gameIsFinished": "false",
+            "serverQuestionId": "03",
+            "finalScore": "03",
+            "questionLabel": "5 + 5 ? ",
+            "proposedAnswer1": "55",
+            "proposedAnswer2": "15",
+            "proposedAnswer3": "12",
+            "proposedAnswer4": "10",
+            "correctAnswer": "proposedAnswer4"
+        }
+    ]
+}
+{
+    "jsonroot": [
+        {
+            "totalCountQuestions": "05",
+            "username": "super",
+            "password": "man",
+            "credentialsOK": "true",
+            "gameIsFinished": "false",
+            "serverQuestionId": "04",
+            "finalScore": "04",
+            "questionLabel": "Dans quelle école sommes-nous cette année ? ",
+            "proposedAnswer1": "Epitruc",
+            "proposedAnswer2": "Les minets",
+            "proposedAnswer3": "L'Etnarc",
+            "proposedAnswer4": "L'Estiam",
+            "correctAnswer": "proposedAnswer4"
+        }
+    ]
+}
+{
+    "jsonroot": [
+        {
+            "totalCountQuestions": "05",
+            "username": "super",
+            "password": "man",
+            "credentialsOK": "true",
+            "gameIsFinished": "false",
+            "serverQuestionId": "05",
+            "finalScore": "05",
+            "questionLabel": "Sur nous nous asseyons sur une ? ",
+            "proposedAnswer1": "table",
+            "proposedAnswer2": "chaise",
+            "proposedAnswer3": "porte",
+            "proposedAnswer4": "maison",
+            "correctAnswer": "proposedAnswer2"
+        }
+    ]
+}
+*/

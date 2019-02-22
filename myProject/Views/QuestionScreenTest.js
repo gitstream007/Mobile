@@ -15,6 +15,9 @@ let actualQuestionId;
 // TODO la couleur doit changer et rester changée à l'appui d'un bouton réponse
 
 export default class QuestionScreenTest extends Component {
+    static navigationOptions = {
+        title: 'QuestionScreenTest'
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -52,6 +55,7 @@ export default class QuestionScreenTest extends Component {
                 console.log("bien répondu ");
                 let partialScore = 1;
                 GameHelper.getProgressiveScore(partialScore, this.state.data.serverQuestionId);
+                this.props.navigation.navigate('CorrectAnswerScreen');
               //  isNewQuestion = false;
             } else {
                 console.log("pas bien répondu !")
@@ -67,8 +71,7 @@ export default class QuestionScreenTest extends Component {
         else
         {
             console.log("déjà répondu à la question ");
-        }
-
+        };
     }
     render() {
         const items = [

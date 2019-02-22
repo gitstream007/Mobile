@@ -3,6 +3,9 @@ import { View, Button, StyleSheet, Text } from 'react-native';
 
 
 export default class CorrectAnswerScreen extends Component {
+    static navigationOptions = {
+        title: 'CorrectAnswerScreen'
+    };
     constructor(props) {
         super(props);
     }

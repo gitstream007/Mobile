@@ -1,4 +1,6 @@
-/*import React, { Component } from 'react';
+/*
+
+import React, { Component } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 
 import { isLoggedIn } from './API/AuthenticationClass';
@@ -28,8 +30,8 @@ export default class Main extends Component {
         const RootNavigator = NavController(this.state.loggedIn);
         return <RootNavigator />
     }
-}*/
-/*const styles = StyleSheet.create({
+}
+const styles = StyleSheet.create({
     base: {
         flex: 1,
         justifyContent: 'center',
