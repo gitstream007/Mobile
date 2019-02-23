@@ -1,11 +1,15 @@
+import React, { Component } from 'react';
 
 let isReceivedScore = false;
 let tempCorrectAnswers = 0;
 let finalScore = 0;
 
-class GameHelper {
-
-    constructor() {}
+export default class GameHelper extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
+    }
 
     static checkCredentials(){
 
@@ -35,16 +39,7 @@ class GameHelper {
         { finalScore = finalScore + tempCorrectAnswers
             console.log("finalScore :" +finalScore);
         }
-    }
-
-    static showCorrectAnswer(){
-        // TODO marche pas
-       // this.props.navigation.navigate('CorrectAnswerScreen');
-    }
-
-    static showIncorrectAnswer(){
-        // TODO marche pas
-       // this.props.navigation.navigate('IncorrectAnswerScreen');
+        return finalScore;
     }
 
     static checkBackButtonIsPressed(){
@@ -52,12 +47,10 @@ class GameHelper {
     }
 
     static checkGameIsFinished(gameIsFinished, finalScore){
-        // TODO marche pas
+        // TODO
         // this.props.navigation.navigate('GameIsFinishedView', {finalScore: finalScore}););
     }
 
 
 
 }
-
-export default GameHelper;

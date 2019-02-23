@@ -1,7 +1,6 @@
 import React from "react";
 import { Text, View, Animated, Easing } from "react-native";
 
-
 export default class LoginScreen extends React.Component {
     static navigationOptions = {
         title: "title"
@@ -9,12 +8,10 @@ export default class LoginScreen extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             content: "",
         };
     }
-
 
     render() {
         return (
@@ -34,5 +31,3 @@ const screenStyles = {
         marginBottom: 20
     },
 };
-
-//const styles = mergeStyles(screenStyles);

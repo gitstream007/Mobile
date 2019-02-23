@@ -1,8 +1,5 @@
-
-
 import React, { Component } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
-
 import { isLoggedIn } from './API/AuthenticationClass';
 import {NavController} from './NavController';
 
@@ -43,8 +40,8 @@ const styles = StyleSheet.create({
 import React from 'react';
 import CorrectAnswerScreen from "./Views/CorrectAnswerScreen";//ok
 import IncorrectAnswerScreen from "./Views/IncorrectAnswerScreen";
+import QuestionScreen0 from "./Views/QuestionScreen0";
 import QuestionScreen from "./Views/QuestionScreen";
-import QuestionScreenTest from "./Views/QuestionScreenTest";
 import GameIsFinishedView from "./Views/GameIsFinishedView";
 import LoginView from "./Views/LoginView";
 
@@ -60,7 +57,7 @@ export default class Main extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <QuestionScreenTest/>
+                <QuestionScreen/>
             </React.Fragment>
         );
     }

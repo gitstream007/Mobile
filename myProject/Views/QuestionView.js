@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Button, Image, StyleSheet, FlatList, Text } from 'react-native';
 
-
 export default class QuestionsView extends Component {
     constructor(props) {
         super(props);
@@ -43,7 +42,6 @@ export default class QuestionsView extends Component {
 const styles = StyleSheet.create({
     base: {
         justifyContent: 'center',
-        //backgroundColor: 'green',
         width: '100%',
         height: '100%',
         display: 'flex',

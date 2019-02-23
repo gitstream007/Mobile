@@ -12,8 +12,6 @@ const url = 'http://127.0.0.1:3000/admin/mobile/login';
 
 class APIService{
     static  FetchFunction(username, password) {
-
-        //headers
         return fetch(url, {method: 'POST', headers: headers, body: JSON.stringify({
                 username: username,
                 password: password
@@ -29,7 +27,6 @@ class APIService{
                     }
                 }
             ).catch((err) => {
-
                 console.log(err);
             });
     }

@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { ActivityIndicator, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 class ActivityIndicatorView extends Component {
-    state = { animating: true }
-
+    state = { animating: true };
     closeActivityIndicator = () => setTimeout(() => this.setState({
-        animating: false }), 60000)
+        animating: false }), 3000);
 
-    componentDidMount = () => this.closeActivityIndicator()
+    componentDidMount = () => this.closeActivityIndicator();
     render() {
-        const animating = this.state.animating
+        const animating = this.state.animating;
         return (
             <View style = {styles.container}>
                 <ActivityIndicator
@@ -21,7 +20,7 @@ class ActivityIndicatorView extends Component {
         )
     }
 }
-export default ActivityIndicatorView
+export default ActivityIndicatorView;
 
 const styles = StyleSheet.create ({
     container: {
@@ -33,4 +32,4 @@ const styles = StyleSheet.create ({
         alignItems: 'center',
         backgroundColor: "black",
     }
-})
+});
