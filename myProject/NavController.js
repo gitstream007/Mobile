@@ -2,6 +2,7 @@ import { createSwitchNavigator } from 'react-navigation';
 
 import NavLoggedOut from './NavLoggedOut';
 import NavLoggedIn from './NavLoggedIn';
+import QuestionScreenTest from "./Views/QuestionScreenTest";
 
 export const NavController = (isLoggedIn = false) => createSwitchNavigator(
     {
@@ -10,7 +11,13 @@ export const NavController = (isLoggedIn = false) => createSwitchNavigator(
         },
         LoggedIn: {
             screen: NavLoggedIn
-        }
+        },
+        QuestionScreenTest: {
+            screen: QuestionScreenTest
+        },
+/*        LoggedOut: {
+            screen: NavLoggedOut
+        },*/
     },
     {
         initialRouteName: isLoggedIn ? 'LoggedIn' : 'LoggedOut'

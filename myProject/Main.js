@@ -1,4 +1,4 @@
-/*
+
 
 import React, { Component } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     }
-});*/
+});
 /////////////////////////////////////////////////////////////////////////////////////////////
-
+/*
 import React from 'react';
 import CorrectAnswerScreen from "./Views/CorrectAnswerScreen";//ok
 import IncorrectAnswerScreen from "./Views/IncorrectAnswerScreen";
@@ -64,7 +64,7 @@ export default class Main extends React.Component {
             </React.Fragment>
         );
     }
-}
+}*/
 
 
 /*
