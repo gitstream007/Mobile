@@ -7,8 +7,8 @@ export default class WelcomeLoggedView extends Component {
         super(props);
         console.disableYellowBox = true;
         this.state = {
-            loading: true,
-            loggedIn: false,
+            showIndicator: true,
+            loggedIn: false,////////////////////////////////////////////////
         };
     }
 
@@ -24,24 +24,18 @@ export default class WelcomeLoggedView extends Component {
             <Text>Merci d'attendre le début de la partie ...</Text>
 
             <ActivityIndicator
-                size="large"
+                size="small"
                 animating={this.state.showIndicator}
 
                 style={this.state.showIndicator ? null : {height: 0}}/>
                       {this.state.showIndicator ? null : this.props.navigation.navigate('QuestionScreenTest')
                       }
-
         </View>
-
-
-
-            )
+            );
 
         const RootNavigator = NavController(this.state.loggedIn);
         return <RootNavigator />
     }
-
-
 }
 
 const styles = StyleSheet.create({
