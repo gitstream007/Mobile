@@ -1,4 +1,4 @@
-/*
+
 
 import React, { Component } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
@@ -12,7 +12,7 @@ export default class Main extends Component {
         console.disableYellowBox = true;
         this.state = {
             loading: true,
-            loggedIn: false
+            loggedIn: false,
         };
     }
     async componentDidMount() {
@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     }
-});*/
+});
 /////////////////////////////////////////////////////////////////////////////////////////////
-
+/*
 import React from 'react';
 import CorrectAnswerScreen from "./Views/CorrectAnswerScreen";//ok
 import IncorrectAnswerScreen from "./Views/IncorrectAnswerScreen";
@@ -60,14 +60,14 @@ export default class Main extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <QuestionScreenTest/>
+                <GameIsFinishedView/>
             </React.Fragment>
         );
     }
 }
 
 
-/*
+
 import React from 'react';
 import SocketIOClient from 'socket.io-client';
 
