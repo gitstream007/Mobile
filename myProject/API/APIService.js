@@ -7,12 +7,9 @@ const headers = {
     'Authorization': ''
 };
 
-const url = 'http://127.0.0.1:3000/admin/mobile/login';
-//const url = 'https://facebook.github.io/react-native/movies.json';
-
 class APIService{
     static  FetchFunction(username, password) {
-        return fetch(url, {method: 'POST', headers: headers, body: JSON.stringify({
+        return fetch(ConstantsAPI.URL, {method: 'POST', headers: headers, body: JSON.stringify({
                 username: username,
                 password: password
             })} )

@@ -7,7 +7,7 @@ import {FlatGrid} from "react-native-super-grid";
 import ConstantsColorsCodes from "../ConstantsColorsCodes";
 import CorrectAnswerScreen from "./CorrectAnswerScreen";
 import QuestionsView from "./QuestionView";
-import GameHelper from "../GameHelper";
+import GameService from "../GameService";
 
 let isNewQuestion = true;
 let actualQuestionId;
@@ -27,16 +27,17 @@ export default class QuestionScreen extends Component {
                     username: "super",
                     password: "man",
                     credentialsOK: "true",
-                    gameIsFinished: "false",
+                    isGameFinished: "false",
                     isNewQuestion: "false",
-                    serverQuestionId: "01",
+                    isReadyToPlay: "false",
+                    questionId: "01",
                     finalScore: "01",
                     questionLabel: "Quelle est la couleur du cheval blanc d'Henri 4 ? ",
-                    proposedAnswer1: "bleu",
-                    proposedAnswer2: "noir",
-                    proposedAnswer3: "orange",
-                    proposedAnswer4: "blanc",
-                    correctAnswer: "blanc"
+                    Answer1: "bleu",
+                    Answer2: "noir",
+                    Answer3: "orange",
+                    Answer4: "blanc",
+                    correctAnswer: "blanc",
                 }
         }
     }
@@ -45,19 +46,19 @@ export default class QuestionScreen extends Component {
         this.setState({count: this.state.count+1});
         console.log("handleClick :" + value);
         this.setState({valueToSave: value});
-        actualQuestionId = this.state.data.serverQuestionId;
+        actualQuestionId = this.state.data.questionId;
         let nextQuestionId = parseInt(actualQuestionId) + 1;
 
         console.log("actualQuestionId :" + actualQuestionId);
         console.log("nextQuestionId :" + nextQuestionId);
         console.log("correctAnswer : " + this.state.data.correctAnswer);
-        console.log("serverQuestionId : " + this.state.data.serverQuestionId);
+        console.log("questionId : " + this.state.data.questionId);
 
-        if (this.state.count < this.state.data.serverQuestionId) {
+        if (this.state.count < this.state.data.questionId) {
             if (value === this.state.data.correctAnswer) {
                 console.log("bien répondu ");
                 let partialScore = 1;
-                GameHelper.getProgressiveScore(partialScore, this.state.data.serverQuestionId);
+                GameService.getProgressiveScore(partialScore, this.state.data.questionId);
                 this.props.navigation.navigate('CorrectAnswerScreen',{tempScore1: 99});
               //  isNewQuestion = false;
             }
@@ -65,11 +66,11 @@ export default class QuestionScreen extends Component {
                 {
                 console.log("pas bien répondu !");
                 let partialScore = 0;
-                GameHelper.getProgressiveScore(partialScore, this.state.data.serverQuestionId);
+                GameService.getProgressiveScore(partialScore, this.state.data.questionId);
                 this.props.navigation.navigate('IncorrectAnswerScreen',{tempScore2: 66});
             }
-            GameHelper.waitNewQuestion(this.state.data.isNewQuestion);
-            GameHelper.checkGameIsFinished(this.state.data.gameIsFinished, this.state.data.finalScore);
+            GameService.waitNewQuestion(this.state.data.isNewQuestion);
+            GameService.checkGameIsFinished(this.state.data.isGameFinished, this.state.data.finalScore);
            // isNewQuestion = false;
            // actualQuestionId = nextQuestionId
             console.log("actualQuestionId :" +actualQuestionId)
@@ -81,8 +82,8 @@ export default class QuestionScreen extends Component {
     }
     render() {
         const items = [
-            { name: this.state.data.proposedAnswer1, code: ConstantsColorsCodes.INCORRECT_RED }, { name: this.state.data.proposedAnswer2, code: ConstantsColorsCodes.MY_BLUE },
-            { name: this.state.data.proposedAnswer3, code: ConstantsColorsCodes.MY_ORANGE }, { name: this.state.data.proposedAnswer4, code: ConstantsColorsCodes.CORRECT_GREEN },
+            { name: this.state.data.Answer1, code: ConstantsColorsCodes.INCORRECT_RED }, { name: this.state.data.Answer2, code: ConstantsColorsCodes.MY_BLUE },
+            { name: this.state.data.Answer3, code: ConstantsColorsCodes.MY_ORANGE }, { name: this.state.data.Answer4, code: ConstantsColorsCodes.CORRECT_GREEN },
         ];
 
         return (

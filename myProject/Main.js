@@ -36,33 +36,6 @@ const styles = StyleSheet.create({
     }
 });
 /////////////////////////////////////////////////////////////////////////////////////////////
-/*
-import React from 'react';
-import CorrectAnswerScreen from "./Views/CorrectAnswerScreen";//ok
-import IncorrectAnswerScreen from "./Views/IncorrectAnswerScreen";
-import QuestionScreen0 from "./Views/QuestionScreen0";
-import QuestionScreen from "./Views/QuestionScreen";
-import GameIsFinishedView from "./Views/GameIsFinishedView";
-import LoginView from "./Views/LoginView";
-
-export default class Main extends React.Component {
-    constructor(props) {
-        super(props);
-        console.disableYellowBox = true;
-
-        this.state = {
-            isLoading: true,
-        }
-    }
-    render() {
-        return (
-            <React.Fragment>
-                <QuestionScreen/>
-            </React.Fragment>
-        );
-    }
-}*/
-
 
 /*
 import React from 'react';

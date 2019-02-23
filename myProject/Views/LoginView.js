@@ -14,13 +14,18 @@ export default class LoginView extends Component {
         }
         this.whenLogin = this.whenLogin.bind(this);
     }
-
-    whenLogin() {
+    // CALL API
+///////////////////////////////////////////////////////////////////////////////////////////////////
+    async whenLogin() {
+        console.log(this.state.username);
+        console.log(this.state.password);
         //await whenLogin();
+
         //APIService.FetchFunction(this.state.username, this.state.password);
+
         this.props.navigation.navigate('GameTab');
     }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////
     render() {
         return (
             <View style={styles.base}>

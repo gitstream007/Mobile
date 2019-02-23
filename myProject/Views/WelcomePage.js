@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {View, Text, StyleSheet, ActivityIndicator} from 'react-native';
 import {NavController} from "../NavController";
 
-export default class WelcomeLoggedView extends Component {
+export default class WelcomePage extends Component {
     constructor(props) {
         super(props);
         console.disableYellowBox = true;

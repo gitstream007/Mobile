@@ -4,7 +4,7 @@ let isReceivedScore = false;
 let tempCorrectAnswers = 0;
 let finalScore = 0;
 
-export default class GameHelper extends Component {
+export default class GameService extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,7 +28,7 @@ export default class GameHelper extends Component {
 
         if(tempCorrectAnswers != 0) {
             console.log("tempCorrectAnswers :"+tempCorrectAnswers);
-            GameHelper.getFinalScore(tempCorrectAnswers);
+            GameService.getFinalScore(tempCorrectAnswers);
         }
     }
 
@@ -46,7 +46,7 @@ export default class GameHelper extends Component {
 
     }
 
-    static checkGameIsFinished(gameIsFinished, finalScore){
+    static checkGameIsFinished(isGameFinished, finalScore){
         // TODO
         // this.props.navigation.navigate('GameIsFinishedView', {finalScore: finalScore}););
     }

@@ -20,7 +20,7 @@ class Main extends React.Component {
     CheckExistingUser() {
         AsyncStorage.getItem(USER_ID)
             .then((userId) => {
-                // If there isn't a stored userId, then fetch one from the server.
+                // If no userId, then fetch one from server.
                 if (!userId) {
                     this.socket.emit('Here comes a new challenger', null);
                     this.socket.on('new one', (userId) => {

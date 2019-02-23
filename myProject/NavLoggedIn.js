@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from 'react-navigation';
-import GameTab from './Views/WelcomeLoggedView';
+import GameTab from './Views/WelcomePage';
 import LogoutTab from './Views/LogoutView';
 
 const NavLoggedIn = createBottomTabNavigator({
