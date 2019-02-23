@@ -17,8 +17,8 @@ export default class LoginView extends Component {
 
     whenLogin() {
         //await whenLogin();
-        //APIService.FetchFunction(this.state.username, this.state.password);
-        this.props.navigation.navigate('GameTab');
+        APIService.FetchFunction(this.state.username, this.state.password);
+        //this.props.navigation.navigate('GameTab');
     }
 
     render() {

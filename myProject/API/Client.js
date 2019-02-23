@@ -1,96 +1,98 @@
 import React from 'react';
-import { View, Text, AsyncStorage } from 'react-native';
 import SocketIOClient from 'socket.io-client';
 
-class Client extends React.Component {
+class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             messages: [],
-            data:
-                {
-                    totalCountQuestions: '',
-                    username: '',
-                    password: '',
-                    credentialsOK: '',
-                    gameIsFinished: '',
-                    isNewQuestion: '',
-                    serverQuestionId: '',
-                    finalScore: '',
-                    questionLabel: '',
-                    proposedAnswer1: '',
-                    proposedAnswer2: '',
-                    proposedAnswer3: '',
-                    proposedAnswer4: '',
-                    correctAnswer: ''
-                }
+            userId: null
         };
-
-        this.onReceivedData = this.onReceivedData.bind(this);
+        this.CheckExistingUser = this.CheckExistingUser.bind(this);
+        this.onReceivedMessage = this.onReceivedMessage.bind(this);
         this.onSend = this.onSend.bind(this);
-        this._storeData = this._storeData.bind(this);
+        this._storeMessages = this._storeMessages.bind(this);
 
         this.socket = SocketIOClient('http://localhost:3000');
-        console.log('socket');
-
-        this.socket.on('data', this.onReceivedData);
+        this.socket.on('message', this.onReceivedMessage);
+        this.CheckExistingUser();
+    }
+    CheckExistingUser() {
+        AsyncStorage.getItem(USER_ID)
+            .then((userId) => {
+                // If there isn't a stored userId, then fetch one from the server.
+                if (!userId) {
+                    this.socket.emit('Here comes a new challenger', null);
+                    this.socket.on('new one', (userId) => {
+                        AsyncStorage.setItem(USER_ID, userId);
+                        this.setState({ userId });
+                    });
+                } else {
+                    this.socket.emit('new one', userId);
+                    this.setState({ userId });
+                }
+            })
+            .catch((e) => alert(e));
     }
 
-    // Event listeners
-    /* When the server sends a message .*/
-
-    onReceivedData(data) {
-        this._storeData(data);
-        console.log('data recu');
+//message from server
+    onReceivedMessage(messages) {
+        this._storeMessages(messages);
     }
 
-    onSend(data=[]) {
-        this.socket.emit('message', data[0]);
-        this._storeData(data);
-        console.log('sended');
+    /**
+     * When a message is sent, send the message to the server
+     * and store it in this component's state.
+     */
+    onSend(messages=[]) {
+        this.socket.emit('message', messages[0]);
+        this._storeMessages(messages);
     }
-
 
     render() {
+        var user = { _id: this.state.userId || -1 };
+
         return (
-            <View>
-                <Text> t e x t </Text>
-            </View>
+            <GiftedChat
+                messages={this.state.messages}
+                onSend={this.onSend}
+                user={user}
+            />
         );
     }
 
-    _storeData(data) {
+    // Helper functions
+    _storeMessages(messages) {
         this.setState((previousState) => {
             return {
-                ///////////////////////,
+                messages: GiftedChat.append(previousState.messages, messages),
             };
         });
     }
 }
 
-module.exports = Client;
+module.exports = Main;
+
+
 /*
+export default class Client extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            open: false,
+            connected: false
+        };
+        this.socket = new WebSocket('ws://127.0.0.1:3000');
+        this.socket.onopen = () => {
+            this.setState({connected:true})
+        };
+        this.emit = this.emit.bind(this);
+    }
 
-import React from 'react-native';
-import './UserAgent';
-
-import io from 'socket.io-client/socket.io';
-
-exports.createConnection = function(host, port, options) {
-    var stream = io('ws://'+host+':'+port, {
-        jsonp: false,
-        reconnection: true,
-        reconnectionAttempts: 32,
-        reconnectionDelay: 50,
-        reconnectionDelayMax: 30000,
-        timeout: 2000,
-        transports: ['websocket']
-    });
-    return stream;
-}
-*/
-
-
-
-
-
+    emit() {
+        if( this.state.connected ) {
+            this.socket.send("It worked!")
+            this.setState(prevState => ({ open: !prevState.open }))
+        }
+    }
+}*/

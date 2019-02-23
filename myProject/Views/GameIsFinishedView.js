@@ -17,10 +17,10 @@ export default class GameIsFinishedView extends Component {
         );
     }
 
-/*    componentWillMount() {
+    componentWillMount() {
         // check si ca fonctionne :
         const {finalScore} = this.props.navigation.state.finalScore;
-    }*/
+    }
 }
 
 const styles = StyleSheet.create({

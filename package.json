@@ -13,8 +13,7 @@
     "react-native-base64": "0.0.2",
     "react-native-easy-grid": "^0.2.0",
     "react-native-super-grid": "^3.0.1",
-    "react-navigation": "^2.0.1",
-    "socket.io-client": "^2.2.0"
+    "react-navigation": "^2.0.1"
   },
   "devDependencies": {
     "babel-core": "7.0.0-bridge.0",
