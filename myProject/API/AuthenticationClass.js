@@ -6,7 +6,6 @@ const Token = new TokenService({
 });
 
 const whenLogin = (credentials) => {
-    // Make API call to retrieve an access token
     const myToken = credentials.token;
     return Token.store(myToken);
 };

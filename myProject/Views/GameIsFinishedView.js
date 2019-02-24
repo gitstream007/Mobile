@@ -16,7 +16,7 @@ export default class GameIsFinishedView extends Component {
     }
 
     componentWillMount() {
-        // check si ca fonctionne :
+        // check
         const {finalScore} = this.props.navigation.state.finalScore;
     }
 }

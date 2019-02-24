@@ -4,6 +4,7 @@ let isReceivedScore = false;
 let tempCorrectAnswers = 0;
 let finalScore = 0;
 
+
 export default class GameService extends Component {
     constructor(props) {
         super(props);
@@ -11,14 +12,10 @@ export default class GameService extends Component {
         };
     }
 
-    static checkCredentials(){
-
-    }
-
     static waitNewQuestion(isNewQuestion){
         if(isNewQuestion)
         {
-            // TODO
+            // pas de serveur
         }
     }
 
@@ -36,21 +33,14 @@ export default class GameService extends Component {
         console.log("finalScore ::::::" );
 
         if(tempCorrectAnswers)
-        { finalScore = finalScore + tempCorrectAnswers
+        { finalScore = finalScore + tempCorrectAnswers;
             console.log("finalScore :" +finalScore);
         }
         return finalScore;
     }
 
-    static checkBackButtonIsPressed(){
-
-    }
-
     static checkGameIsFinished(isGameFinished, finalScore){
-        // TODO
+        // pas de serveur
         // this.props.navigation.navigate('GameIsFinishedView', {finalScore: finalScore}););
     }
-
-
-
 }

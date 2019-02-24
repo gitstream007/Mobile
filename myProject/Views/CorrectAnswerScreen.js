@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {View, Button, StyleSheet, Text, ActivityIndicator} from 'react-native';
 import ConstantsColorsCodes from "../ConstantsColorsCodes";
-import * as navigation from "react-navigation";
 
 export default class CorrectAnswerScreen extends Component {
     static navigationOptions = {
@@ -20,17 +19,15 @@ export default class CorrectAnswerScreen extends Component {
 
     render() {
         const { navigation } = this.props;
-        const tempScore1 = navigation.getParam('tempScore1');
+        const tempScore1 = navigation.getParam('tempScore');
         return (
             <View style={styles.base}>
                 <Text style={styles.itemName}>La réponse est correcte !</Text>
                 <Text>Votre score temporaire est de :{JSON.stringify(tempScore1)}</Text>
                 <Text style={styles.itemName}>Attente d'une nouvelle question </Text>
-
                 <ActivityIndicator
                     size="small"
                     animating={this.state.showIndicator}
-
                     style={this.state.showIndicator ? null : {height: 0}}/>
                 {this.state.showIndicator ? null : this.props.navigation.navigate('QuestionScreen')
                 }

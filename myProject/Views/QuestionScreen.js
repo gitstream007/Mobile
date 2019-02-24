@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
 import { View, Button, StyleSheet, Text, TouchableOpacity, ActivityIndicator, FlatList } from 'react-native';
-import { Col, Row, Grid } from "react-native-easy-grid";
-import * as navigation from "react-navigation";
-
-import {FlatGrid} from "react-native-super-grid";
 import ConstantsColorsCodes from "../ConstantsColorsCodes";
 import CorrectAnswerScreen from "./CorrectAnswerScreen";
-import QuestionsView from "./QuestionView";
 import GameService from "../GameService";
 import APIService from "../API/APIService";
 
 let isNewQuestion = true;
 let actualQuestionId;
-
-
 
 export default class QuestionScreen extends Component {
     static navigationOptions = {
@@ -32,7 +25,6 @@ export default class QuestionScreen extends Component {
     componentWillMount(): void {
         APIService.FetchFunction()
             .then(response => {
-                console.log('response1' + response);
                 this.setState({
                     isLoading: false,
                     data: response.data
@@ -45,7 +37,6 @@ export default class QuestionScreen extends Component {
     handleClick(value) {
         let data2 = this.state.data[0];
         this.setState({count: this.state.count + 1});
-        console.log("handleClick :" + value);
         this.setState({valueToSave: value});
         actualQuestionId = this.state.data[0].questionId;
         let nextQuestionId = parseInt(actualQuestionId) + 1;
@@ -54,21 +45,17 @@ export default class QuestionScreen extends Component {
         console.log("nextQuestionId :" + nextQuestionId);
         console.log("correctAnswer : " + this.state.data[0].correctAnswer);
         console.log("questionId : " + this.state.data[0].questionId);
-        console.log(" le state " + this.state.data[0].correctAnswer);
-
 
         if (this.state.count < this.state.data[0].questionId) {
             if (value === this.state.data[0].correctAnswer) {
-                console.log("bien répondu ");
                 let partialScore = 1;
                 GameService.getProgressiveScore(partialScore, this.state.data[0].questionId);
-                this.props.navigation.navigate('CorrectAnswerScreen', {tempScore1: 99});
+                this.props.navigation.navigate('CorrectAnswerScreen', {tempScore: partialScore});
                 //  isNewQuestion = false;
             } else {
-                console.log("pas bien répondu !");
                 let partialScore = 0;
                 GameService.getProgressiveScore(partialScore, this.state.data[0].questionId);
-                this.props.navigation.navigate('IncorrectAnswerScreen', {tempScore2: 66});
+                this.props.navigation.navigate('IncorrectAnswerScreen', {tempScore: partialScore});
             }
             GameService.waitNewQuestion(this.state.data[0].isNewQuestion);
             GameService.checkGameIsFinished(this.state.data[0].isGameFinished, this.state.data[0].finalScore);
@@ -81,14 +68,9 @@ export default class QuestionScreen extends Component {
         ;
     }
 
-    //keyExtractor = (item, index) => index
-
     render() {
-        console.log("enters the QuestionScreen render ");
-
         const {navigation} = this.props;
         const actualUsername = navigation.getParam('actualUsername');
-
         /*        const items = [
                     { name: this.state.data.Answer1, code: ConstantsColorsCodes.INCORRECT_RED }, { name: this.state.data.Answer2, code: ConstantsColorsCodes.MY_BLUE },
                     { name: this.state.data.Answer3, code: ConstantsColorsCodes.MY_ORANGE }, { name: this.state.data.Answer4, code: ConstantsColorsCodes.CORRECT_GREEN },
@@ -107,10 +89,8 @@ export default class QuestionScreen extends Component {
                 {this.state.data &&
                 <FlatList
                     data={this.state.data}
-
                     renderItem={({item}) =>
                         <View>
-
                             <Button title='1' color={ConstantsColorsCodes.INCORRECT_RED } onPress={() => this.handleClick(item.Answer1)}/>
                             <Text>{item.Answer1}</Text>
 
@@ -122,16 +102,12 @@ export default class QuestionScreen extends Component {
 
                             <Button title='4' color={ConstantsColorsCodes.MY_ORANGE} onPress={() => this.handleClick(item.Answer4)}/>
                             <Text>{item.Answer4}</Text>
-
                         </View>
                     }/>}
             </View>
-
         );
     }
 }
-
-
 
 const styles = StyleSheet.create({
     grid: {

@@ -26,8 +26,7 @@ export default class WelcomePage extends Component {
                 size="small"
                 animating={this.state.showIndicator}
                 style={this.state.showIndicator ? null : {height: 0}}/>
-                      {this.state.showIndicator ? null : this.props.navigation.navigate('QuestionScreen')
-                      }
+                      {this.state.showIndicator ? null : this.props.navigation.navigate('QuestionScreen') }
         </View>
             );
         const RootNavigator = NavController(this.state.loggedIn);

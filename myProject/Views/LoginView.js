@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import {View, Button, StyleSheet, TextInput} from 'react-native'
-
-import { whenLogin } from '../API/AuthenticationClass'
+import {View, Button, StyleSheet, TextInput} from 'react-native';
 import ConstantsColorsCodes from "../ConstantsColorsCodes";
 import APIService from "../API/APIService";
 
@@ -16,15 +14,13 @@ export default class LoginView extends Component {
         };
         this.whenLogin = this.whenLogin.bind(this);
     }
-    // CALL API
-///////////////////////////////////////////////////////////////////////////////////////////////////
+
     async whenLogin() {
         //console.log(this.state.username);
         //console.log(this.state.password);
         //await whenLogin();
         APIService.FetchFunction()
           .then(response => {
-            console.log(response);
               this.setState({
                   isLoading: false,
                   data: response.data});
@@ -34,10 +30,8 @@ export default class LoginView extends Component {
 
         //APIService.FetchFunction(this.state.username, this.state.password);
         console.log(this.state.username);
-
         this.props.navigation.navigate('GameTab',{actualUsername: this.state.username});
     }
-///////////////////////////////////////////////////////////////////////////////////////////////////
     render() {
         return (
             <View style={styles.base}>
@@ -48,7 +42,6 @@ export default class LoginView extends Component {
                     placeholderTextColor='white'
                     onChangeText={(value) => this.setState({username: value})}
                 />
-
                 <TextInput
                     style={styles.input}
                     placeholder='Password'
@@ -57,7 +50,6 @@ export default class LoginView extends Component {
                     placeholderTextColor='white'
                     onChangeText={(value) => this.setState({password: value})}
                 />
-
                 <Button
                     title='Login'
                     onPress={this.whenLogin}/>

@@ -13,20 +13,15 @@ export default class QuestionsView extends Component {
     componentWillMount(): void {
         APIService.FetchFunction()
             .then(response => {
-                console.log('response0' +response);
                 this.setState({
                     isLoading: false,
                     data: response.data});
                 return Promise.resolve()
             })
             .catch(error => console.log(error));
-        console.log('questionLabel 1:'+this.state.data.questionLabel);
     }
 
     render() {
-        console.log("enters the QuestionsView render ");
-        console.log("step QuestionsView render :" +this.state.data);
-
         return (
             <View  style={styles.base}>
                 {this.state.data &&
