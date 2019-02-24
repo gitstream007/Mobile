@@ -8,11 +8,14 @@ import ConstantsColorsCodes from "../ConstantsColorsCodes";
 import CorrectAnswerScreen from "./CorrectAnswerScreen";
 import QuestionsView from "./QuestionView";
 import GameService from "../GameService";
+import APIService from "../API/APIService";
 
 let isNewQuestion = true;
 let actualQuestionId;
 
-export default class QuestionScreen extends Component {
+
+
+    export default class QuestionScreen extends Component {
     static navigationOptions = {
         title: 'QuestionScreen'
     };
@@ -21,44 +24,41 @@ export default class QuestionScreen extends Component {
         this.state = {
             valueToSave: '',
             count: 0,
-            data:
-                {
-                    totalCountQuestions: "05",
-                    username: "super",
-                    password: "man",
-                    credentialsOK: "true",
-                    isGameFinished: "false",
-                    isNewQuestion: "false",
-                    isReadyToPlay: "false",
-                    questionId: "01",
-                    finalScore: "01",
-                    questionLabel: "Quelle est la couleur du cheval blanc d'Henri 4 ? ",
-                    Answer1: "bleu",
-                    Answer2: "noir",
-                    Answer3: "orange",
-                    Answer4: "blanc",
-                    correctAnswer: "blanc",
-                }
+            data: [],
         }
     }
 
-    handleClick(value) {
+    componentWillMount(): void {
+        APIService.FetchFunction()
+            .then(response => {
+                console.log('response1' +response);
+                this.setState({
+                    isLoading: false,
+                    data: response.data});
+                return Promise.resolve()
+            })
+            .catch(error => console.log(error));
+        }
+
+    handleClick(value) {let data2 = this.state.data[0];
         this.setState({count: this.state.count+1});
         console.log("handleClick :" + value);
         this.setState({valueToSave: value});
-        actualQuestionId = this.state.data.questionId;
+        actualQuestionId = this.state.data[0].questionId;
         let nextQuestionId = parseInt(actualQuestionId) + 1;
 
         console.log("actualQuestionId :" + actualQuestionId);
         console.log("nextQuestionId :" + nextQuestionId);
-        console.log("correctAnswer : " + this.state.data.correctAnswer);
-        console.log("questionId : " + this.state.data.questionId);
+        console.log("correctAnswer : " + this.state.data[0].correctAnswer);
+        console.log("questionId : " + this.state.data[0].questionId);
+        console.log(" le state "+this.state.data[0].correctAnswer);
 
-        if (this.state.count < this.state.data.questionId) {
-            if (value === this.state.data.correctAnswer) {
+
+        if (this.state.count < this.state.data[0].questionId) {
+            if (value === this.state.data[0].correctAnswer) {
                 console.log("bien répondu ");
                 let partialScore = 1;
-                GameService.getProgressiveScore(partialScore, this.state.data.questionId);
+                GameService.getProgressiveScore(partialScore, this.state.data[0].questionId);
                 this.props.navigation.navigate('CorrectAnswerScreen',{tempScore1: 99});
               //  isNewQuestion = false;
             }
@@ -66,11 +66,11 @@ export default class QuestionScreen extends Component {
                 {
                 console.log("pas bien répondu !");
                 let partialScore = 0;
-                GameService.getProgressiveScore(partialScore, this.state.data.questionId);
+                GameService.getProgressiveScore(partialScore, this.state.data[0].questionId);
                 this.props.navigation.navigate('IncorrectAnswerScreen',{tempScore2: 66});
             }
-            GameService.waitNewQuestion(this.state.data.isNewQuestion);
-            GameService.checkGameIsFinished(this.state.data.isGameFinished, this.state.data.finalScore);
+            GameService.waitNewQuestion(this.state.data[0].isNewQuestion);
+            GameService.checkGameIsFinished(this.state.data[0].isGameFinished, this.state.data[0].finalScore);
            // isNewQuestion = false;
            // actualQuestionId = nextQuestionId
             console.log("actualQuestionId :" +actualQuestionId)
@@ -80,7 +80,12 @@ export default class QuestionScreen extends Component {
             console.log("déjà répondu à la question ");
         };
     }
+
+    //keyExtractor = (item, index) => index
+
     render() {
+        console.log("enters the QuestionScreen render ");
+
         const { navigation } = this.props;
         const actualUsername = navigation.getParam('actualUsername');
 
@@ -100,6 +105,7 @@ export default class QuestionScreen extends Component {
                 </Row>
                 <Row>
                     <FlatGrid
+                       // data = { this.state.data}
                         itemDimension={130}
                         items={items}
                         style={styles.gridView}

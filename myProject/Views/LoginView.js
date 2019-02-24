@@ -12,7 +12,7 @@ export default class LoginView extends Component {
             isLoading: true,
             username: '',
             password: '',
-            dataSource: []
+            data: []
         };
         this.whenLogin = this.whenLogin.bind(this);
     }
@@ -27,7 +27,7 @@ export default class LoginView extends Component {
             console.log(response);
               this.setState({
                   isLoading: false,
-                  dataSource: response.data});
+                  data: response.data});
               return Promise.resolve()
           })
             .catch(error => console.log(error));

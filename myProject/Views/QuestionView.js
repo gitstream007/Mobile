@@ -1,41 +1,41 @@
 import React, { Component } from 'react';
 import { View, Button, Image, StyleSheet, FlatList, Text } from 'react-native';
+import APIService from "../API/APIService";
 
 export default class QuestionsView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-               data:[
-                    {
-                        totalCountQuestions: "05",
-                        username: "super",
-                        password: "man",
-                        isCredentialsOK: "true",
-                        isGameFinished: "false",
-                        isNewQuestion: "false",
-                        isReadyToPlay: "false",
-                        questionId: "01",
-                        finalScore: "01",
-                        questionLabel: "Quelle est la couleur du cheval blanc d'Henri 4 ? ",
-                        Answer1: "bleu",
-                        Answer2: "noir",
-                        Answer3: "orange",
-                        Answer4: "blanc",
-                        correctAnswer: "blanc",
-                    }
-               ]
+            data: [],
         }
     }
 
+    componentWillMount(): void {
+        APIService.FetchFunction()
+            .then(response => {
+                console.log('response0' +response);
+                this.setState({
+                    isLoading: false,
+                    data: response.data});
+                return Promise.resolve()
+            })
+            .catch(error => console.log(error));
+        console.log('questionLabel 1:'+this.state.data.questionLabel);
+    }
+
     render() {
+        console.log("enters the QuestionsView render ");
+        console.log("step QuestionsView render :" +this.state.data);
+
         return (
             <View  style={styles.base}>
+                {this.state.data &&
             <FlatList
                 data = { this.state.data}
                 renderItem = {({item}) =>
                 <Text> { item.questionLabel } </Text>
             }
-                />
+                />}
             </View>
         );
     }
