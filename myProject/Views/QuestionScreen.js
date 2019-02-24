@@ -81,6 +81,9 @@ export default class QuestionScreen extends Component {
         };
     }
     render() {
+        const { navigation } = this.props;
+        const actualUsername = navigation.getParam('actualUsername');
+
         const items = [
             { name: this.state.data.Answer1, code: ConstantsColorsCodes.INCORRECT_RED }, { name: this.state.data.Answer2, code: ConstantsColorsCodes.MY_BLUE },
             { name: this.state.data.Answer3, code: ConstantsColorsCodes.MY_ORANGE }, { name: this.state.data.Answer4, code: ConstantsColorsCodes.CORRECT_GREEN },
@@ -109,10 +112,14 @@ export default class QuestionScreen extends Component {
                                     <Text style={styles.itemName}>{item.name}</Text>
                                 </View>
                             </TouchableOpacity>
+
                         )}
                     />
+{/*                    <View>
+                        <Text>{JSON.stringify(actualUsername)}</Text>
+                    </View>*/}
                 </Row>
-            </Grid>
+      </Grid>
         );
     }
 }
@@ -144,6 +151,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#fff',
         fontWeight: '600',
+        justifyContent: 'center',
+        alignContent: 'center',
+        textAlign: 'center',
+    },
+    itemName2: {
+        fontSize: 50,
+        color: 'black',
         justifyContent: 'center',
         alignContent: 'center',
         textAlign: 'center',

@@ -9,21 +9,33 @@ export default class LoginView extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isLoading: true,
             username: '',
-            password: ''
-        }
+            password: '',
+            dataSource: []
+        };
         this.whenLogin = this.whenLogin.bind(this);
     }
     // CALL API
 ///////////////////////////////////////////////////////////////////////////////////////////////////
     async whenLogin() {
-        console.log(this.state.username);
-        console.log(this.state.password);
+        //console.log(this.state.username);
+        //console.log(this.state.password);
         //await whenLogin();
+        APIService.FetchFunction()
+          .then(response => {
+            console.log(response);
+              this.setState({
+                  isLoading: false,
+                  dataSource: response.data});
+              return Promise.resolve()
+          })
+            .catch(error => console.log(error));
 
         //APIService.FetchFunction(this.state.username, this.state.password);
+        console.log(this.state.username);
 
-        this.props.navigation.navigate('GameTab');
+        this.props.navigation.navigate('GameTab',{actualUsername: this.state.username});
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
     render() {
@@ -72,4 +84,4 @@ const styles = StyleSheet.create({
         borderWidth: 5,
         backgroundColor: ConstantsColorsCodes.CORRECT_GREEN
     }
-})
+});
