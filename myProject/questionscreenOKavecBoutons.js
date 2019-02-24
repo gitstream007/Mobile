@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react';
 import { View, Button, StyleSheet, Text, TouchableOpacity, ActivityIndicator, FlatList } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
@@ -89,10 +90,10 @@ export default class QuestionScreen extends Component {
         const {navigation} = this.props;
         const actualUsername = navigation.getParam('actualUsername');
 
-        /*        const items = [
+        /!*        const items = [
                     { name: this.state.data.Answer1, code: ConstantsColorsCodes.INCORRECT_RED }, { name: this.state.data.Answer2, code: ConstantsColorsCodes.MY_BLUE },
                     { name: this.state.data.Answer3, code: ConstantsColorsCodes.MY_ORANGE }, { name: this.state.data.Answer4, code: ConstantsColorsCodes.CORRECT_GREEN },
-                ];*/
+                ];*!/
 
         if (this.state.isLoading) {
             return (
@@ -111,17 +112,17 @@ export default class QuestionScreen extends Component {
                     renderItem={({item}) =>
                         <View>
 
-                            <Button title='1' color={ConstantsColorsCodes.INCORRECT_RED } onPress={() => this.handleClick(item.Answer1)}/>
-                            <Text>{item.Answer1}</Text>
+                            <Button title='1' onPress={() => this.handleClick()}/>
+                            <Text>{item.password}</Text>
 
-                            <Button title='2' color={ConstantsColorsCodes.MY_BLUE} onPress={() => this.handleClick(item.Answer2)}/>
-                            <Text>{item.Answer2}</Text>
+                            <Button title='2' onPress={() => this.handleClick()}/>
+                            <Text>{item.password}</Text>
 
-                            <Button title='3' color={ConstantsColorsCodes.CORRECT_GREEN} onPress={() => this.handleClick(item.Answer3)}/>
-                            <Text>{item.Answer3}</Text>
+                            <Button title='3' onPress={() => this.handleClick()}/>
+                            <Text>{item.password}</Text>
 
-                            <Button title='4' color={ConstantsColorsCodes.MY_ORANGE} onPress={() => this.handleClick(item.Answer4)}/>
-                            <Text>{item.Answer4}</Text>
+                            <Button title='4' onPress={() => this.handleClick()}/>
+                            <Text>{item.password}</Text>
 
                         </View>
                     }/>}
@@ -191,4 +192,4 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         textAlign: 'center',
     },
-});
+});*/
