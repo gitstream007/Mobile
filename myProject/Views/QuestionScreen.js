@@ -41,7 +41,10 @@ export default class QuestionScreen extends Component {
         jsonDataKeys.forEach((theKey) => {
             let theQuestion = {[theKey]: this.state.data[theKey]};
 
-            console.log('theQuestion !!! :' +theQuestion[theKey].questionLabel);
+            console.log('theQuestion key :!!! :' +theQuestion[theKey].questionLabel);
+            let ici = theQuestion[theKey].questionLabel;
+            console.log('theQuestion ici :!!! :' +ici);
+
         });
         ///////////////////////////////////////////////////////////////////////////
 
