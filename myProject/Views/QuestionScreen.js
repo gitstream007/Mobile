@@ -35,6 +35,16 @@ export default class QuestionScreen extends Component {
     }
 
     handleClick(value) {
+        ///////////////////////////////////////////////////////////////////////////
+        let jsonDataKeys = Object.keys(this.state.data);
+
+        jsonDataKeys.forEach((theKey) => {
+            let theQuestion = {[theKey]: this.state.data[theKey]};
+
+            console.log('theQuestion !!! :' +theQuestion[theKey].questionLabel);
+        });
+        ///////////////////////////////////////////////////////////////////////////
+
         let data2 = this.state.data[0];
         this.setState({count: this.state.count + 1});
         this.setState({valueToSave: value});

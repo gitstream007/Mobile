@@ -19,6 +19,18 @@ export default class GameService extends Component {
         }
     }
 
+    static checkNumberOfQuestion(data){
+        if(data)
+        {
+            console.log("passage dans checkNumberOfQuestion");
+            console.log("checkNumberOfQuestion :"+data);
+
+        }
+        else{
+            console.log("pas de data à check :");
+        }
+    }
+
     static getProgressiveScore(partialScore){
         let tempCorrectAnswers = partialScore;
         console.log("tempCorrectAnswers :"+tempCorrectAnswers);

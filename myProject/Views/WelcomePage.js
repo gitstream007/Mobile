@@ -22,6 +22,9 @@ export default class WelcomePage extends Component {
             <Text>Bienvenue !</Text>
             <Text>Merci d'attendre le début de la partie ...</Text>
 
+{/*
+            TODO  bool to change view, set inside activity indicator
+*/}
             <ActivityIndicator
                 size="small"
                 animating={this.state.showIndicator}

@@ -29,8 +29,10 @@ export default class LoginView extends Component {
             .catch(error => console.log(error));
 
         //APIService.FetchFunction(this.state.username, this.state.password);
-        console.log(this.state.username);
-        this.props.navigation.navigate('GameTab',{actualUsername: this.state.username});
+        console.log('this.state.username : '+this.state.username);
+        console.log('data : '+this.state.data);
+
+        this.props.navigation.navigate('WelcomePage',{actualUsername: this.state.username});
     }
     render() {
         return (
