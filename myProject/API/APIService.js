@@ -8,7 +8,7 @@ const headers = {
 
 class APIService{
     static  FetchFunction() {
-   return fetch(ConstantsAPI.URL_TEST)
+   return fetch(ConstantsAPI.URL_TEST_ALL)
        .then((response) =>
            {
                if(response.status === 200)
