@@ -46,6 +46,9 @@ export default class QuestionScreen extends Component {
         console.log("correctAnswer : " + this.state.data[0].correctAnswer);
         console.log("questionId : " + this.state.data[0].questionId);
 
+        console.log("questionLabel1 : " + this.state.data[1].questionLabel);
+
+
         if (this.state.count < this.state.data[0].questionId) {
             if (value === this.state.data[0].correctAnswer) {
                 let partialScore = 1;
@@ -101,7 +104,7 @@ export default class QuestionScreen extends Component {
                             <Text>{item.Answer3}</Text>
 
                             <Button title='4' color={ConstantsColorsCodes.MY_ORANGE} onPress={() => this.handleClick(item.Answer4)}/>
-                            <Text>{item.Answer4}</Text>
+                            <Text>{item.questionLabel}</Text>
                         </View>
                     }/>}
             </View>
